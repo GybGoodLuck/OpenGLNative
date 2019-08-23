@@ -55,7 +55,7 @@ void Cube::init() {
 
     glBindBuffer(GL_ARRAY_BUFFER, 0);
     glBindVertexArray(0);
-    rotate({1, 0, 0}, glm::radians(90.f));
+    rotate({1, 0, 0}, -glm::radians(90.f));
 }
 
 void Cube::render() {

@@ -29,8 +29,8 @@ void TestSurface::initEGL() {
     eglInitialize(m_display, &eglMajVers, &eglMinVers);
     eglChooseConfig(m_display, configSpec, &m_config, 1, &numConfigs);
     m_surface = eglCreateWindowSurface(m_display, m_config, aNativeWindow, NULL);
-    eglQuerySurface(m_display, m_surface, EGL_WIDTH, &m_width);
-    eglQuerySurface(m_display, m_surface, EGL_WIDTH, &m_height);
+    eglQuerySurface(m_display, m_surface, EGL_HEIGHT, &m_width);
+    eglQuerySurface(m_display, m_surface, EGL_HEIGHT, &m_height);
 
     const EGLint ctxAttr[] = {
             EGL_CONTEXT_CLIENT_VERSION, 2,
@@ -64,15 +64,15 @@ void TestSurface::setCameraDir(float x, float y, float z) {
 void TestSurface::setQua(float w, float x, float y, float z) {
     glm::quat quat;
     quat.w = w;
-    quat.x = x;
+    quat.x = -x;
     quat.y = y;
-    quat.z = z;
+    quat.z = -z;
     auto camerInfo = m_camera->getCameraInfo();
     camerInfo.m_dir = quat * __dir;
     camerInfo.m_up = quat * __up;
-    camerInfo.m_up.y = -camerInfo.m_up.y;
     m_camera->setCameraInfo(camerInfo);
     m_Cube->updateCameraInfo(camerInfo);
+    auto projection = m_camera->getCameraProjection();
 }
 
 void TestSurface::renderLoop() {

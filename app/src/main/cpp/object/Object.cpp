@@ -24,7 +24,7 @@ void Object::updateCameraProjection(const CameraProjection &projection) {
 }
 
 void Object::updateCameraInfo(const CameraInfo& cameraInfo) {
-    m_view = glm::lookAt(cameraInfo.m_pos, cameraInfo.m_dir, cameraInfo.m_up);
+    m_view = glm::lookAt(cameraInfo.m_pos, cameraInfo.m_pos + cameraInfo.m_dir, cameraInfo.m_up);
 }
 
 void Object::updatePos(const glm::vec3& pos) {
