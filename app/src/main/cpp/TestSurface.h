@@ -21,6 +21,7 @@ public:
     void startRenderThread(ANativeWindow* window);
 
     void setCameraDir(float x, float y, float z);
+    void setQua(float w, float x, float y, float z);
 
 private:
     EGLDisplay m_display;
@@ -40,6 +41,9 @@ private:
     Cube::Ptr m_Cube, m_Cube2;
 
     GLuint mTextureID;
+
+    glm::vec3 __up = {0, 1, 0};
+    glm::vec3 __dir = {0, 0, 1};
 
     void initEGL();
     void prepareTriangle();

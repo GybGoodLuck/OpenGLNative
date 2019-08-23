@@ -6,6 +6,8 @@ import android.view.MotionEvent;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
+import android.view.Window;
+import android.view.WindowManager;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -13,6 +15,8 @@ public class MainActivity extends AppCompatActivity {
     private final static String TAG = "GLTest MainActivity";
 
     private SurfaceView mSurfaceView;
+
+    private Sensor mSensor;
 
     // Used to load the 'native-lib' library on application startup.
     static {
@@ -22,9 +26,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // 隐藏标题栏
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
+        // 隐藏状态栏
+        // 定义全屏参数
+        int flag = WindowManager.LayoutParams.FLAG_FULLSCREEN;
+        // 获得当前窗体对象
+        Window window = getWindow();
+        // 设置当前窗体为全屏显示
+        window.setFlags(flag, flag);
         setContentView(R.layout.activity_main);
         mSurfaceView = findViewById(R.id.surfaceView);
+        mSensor = new Sensor(this);
 
         mSurfaceView.getHolder().addCallback(new SurfaceHolder.Callback() {
             @Override

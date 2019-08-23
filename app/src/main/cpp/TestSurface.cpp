@@ -59,20 +59,20 @@ void TestSurface::prepareTriangle() {
 }
 
 void TestSurface::setCameraDir(float x, float y, float z) {
+}
 
-    if (800 > y) {
-        m_Cube->rotate({1.0f, 0.0f, 0.0f}, glm::radians(5.0f));
-    } else if(y > 1600) {
-        m_Cube->rotate({1.0f, 0.0f, 0.0f}, -glm::radians(5.0f));
-    } else {
-        if (x >= 640) {
-            m_Cube->rotate({0.0f, 1.0f, 0.0f}, glm::radians(5.0f));
-        } else {
-            m_Cube->rotate({0.0f, 1.0f, 0.0f}, -glm::radians(5.0f));
-        }
-    }
-
-//    m_Cube->rotate({1.0f, 0.0f, 0.0f}, y);
+void TestSurface::setQua(float w, float x, float y, float z) {
+    glm::quat quat;
+    quat.w = w;
+    quat.x = x;
+    quat.y = y;
+    quat.z = z;
+    auto camerInfo = m_camera->getCameraInfo();
+    camerInfo.m_dir = quat * __dir;
+    camerInfo.m_up = quat * __up;
+    camerInfo.m_up.y = -camerInfo.m_up.y;
+    m_camera->setCameraInfo(camerInfo);
+    m_Cube->updateCameraInfo(camerInfo);
 }
 
 void TestSurface::renderLoop() {

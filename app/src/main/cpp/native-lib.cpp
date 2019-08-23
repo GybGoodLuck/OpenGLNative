@@ -25,3 +25,15 @@ Java_com_iris_testdemo_MainActivity_setCameraDir(
     TestSurface* surface = allocateSurface();
     surface->setCameraDir(x, y, z);
 }
+
+extern "C" JNIEXPORT void JNICALL
+Java_com_iris_testdemo_Sensor_setRotQ(
+        JNIEnv *env,
+        jobject /* this */,
+        jfloat w,
+        jfloat x,
+        jfloat y,
+        jfloat z) {
+    TestSurface* surface = allocateSurface();
+    surface->setQua(w, x, y, z);
+}

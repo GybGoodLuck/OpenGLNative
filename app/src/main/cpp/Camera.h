@@ -17,8 +17,8 @@ struct CameraProjection {
 };
 
 struct CameraInfo {
-    glm::vec3 m_pos = { 0.0f, 0.0f, 5.0f };
-    glm::vec3 m_dir = { 0.0f, 0.0f, 0.0f };
+    glm::vec3 m_pos = { 0.0f, 0.0f, 0.0f };
+    glm::vec3 m_dir = { 0.0f, 0.0f, 1.0f };
     glm::vec3 m_up = { 0.0f, 1.0f, 0.0f };
 };
 
