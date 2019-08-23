@@ -12,24 +12,17 @@ Object::Object(int width, int height, const glm::vec3 &pos,
         : m_width(width), m_height(height), m_pos(pos),
           m_color(color), m_alpha(alpha), m_camera(camera) {
     updatePos(m_pos);
-    updateCameraProjection(m_camera->getCameraProjection());
-    updateCameraInfo(m_camera->getCameraInfo());
+    // updateCameraProjection(m_camera->getCameraProjection());
     m_program = createProgram(gVertexShader, gFragmentShader);
     getShaderParams();
 }
 
-void Object::updateCameraProjection(const CameraProjection &projection) {
-    m_projection = glm::perspective(projection.m_fov, projection.m_aspect,
-                                    projection.m_zNear, projection.m_zFar);
-}
-
-void Object::updateCameraInfo(const CameraInfo& cameraInfo) {
-    m_view = glm::lookAt(cameraInfo.m_pos, cameraInfo.m_pos + cameraInfo.m_dir, cameraInfo.m_up);
-}
-
 void Object::updatePos(const glm::vec3& pos) {
     m_transform = glm::translate(m_transform, pos);
-//    m_transform = glm::scale(m_transform, {0.5, 0.5, 0.5});
+}
+
+void Object::scale(float scale) {
+    m_transform = glm::scale(m_transform, {scale, scale, scale});
 }
 
 void Object::rotate(const glm::vec3& axis, float radians) {
@@ -44,7 +37,18 @@ void Object::getShaderParams() {
     glUseProgram(m_program);
 }
 
+void Object::updateCamera() {
+    auto projection = m_camera->getCameraProjection();
+
+    m_projection = glm::perspective(projection.m_fov, projection.m_aspect,
+                                    projection.m_zNear, projection.m_zFar);
+
+    auto info = m_camera->getCameraInfo();
+    m_view = glm::lookAt(info.m_pos, info.m_pos + info.m_dir, info.m_up);
+}
+
 void Object::updateRenderData() {
+    updateCamera();
     glUniformMatrix4fv(s_projection, 1, GL_FALSE, glm::value_ptr(m_projection));
     glUniformMatrix4fv(s_view, 1, GL_FALSE, glm::value_ptr(m_view));
     glUniformMatrix4fv(s_transform, 1, GL_FALSE, glm::value_ptr(m_transform));

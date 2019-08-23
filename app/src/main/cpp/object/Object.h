@@ -24,11 +24,11 @@ public:
     virtual void init() = 0;
     virtual void render() = 0;
 
-    void updateCameraProjection(const CameraProjection& projection);
-    void updateCameraInfo(const CameraInfo& cameraInfo);
     void updatePos(const glm::vec3& pos);
+    void scale(float scale);
     void rotate(const glm::vec3& axis, float radians);
     void updateRenderData();
+    void updateCamera();
 
     void getShaderParams();
 

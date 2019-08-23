@@ -47,3 +47,10 @@
 505	562	1565847601	/home/yuanbin/workspace/OpenGLNative/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	7971d06a0cef91db
 0	478	1565847618	CMakeFiles/native-lib.dir/TextureLoader.cpp.o	9fb49730c2d49448
 478	535	1565847618	/home/yuanbin/workspace/OpenGLNative/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	7971d06a0cef91db
+2	221	1566563935	CMakeFiles/native-lib.dir/Camera.cpp.o	6a97816e722d21af
+1	365	1566563935	CMakeFiles/native-lib.dir/object/Object.cpp.o	909c4f7d4fcd8e6c
+1	415	1566563935	CMakeFiles/native-lib.dir/native-lib.cpp.o	9a4e2c792090975d
+1	501	1566563935	CMakeFiles/native-lib.dir/object/Cube.cpp.o	4c8a7f4b9e80a164
+3	566	1566563935	CMakeFiles/native-lib.dir/TestSurface.cpp.o	1dcd9bc85bc0b613
+3	896	1566563936	CMakeFiles/native-lib.dir/TextureLoader.cpp.o	9fb49730c2d49448
+896	1050	1566563936	/home/yuanbin/workspace/OpenGLNative/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libnative-lib.so	7971d06a0cef91db

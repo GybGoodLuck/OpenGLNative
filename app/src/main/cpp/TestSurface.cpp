@@ -49,13 +49,15 @@ void TestSurface::startRenderThread(ANativeWindow* window) {
 
 void TestSurface::prepareTriangle() {
     glm::vec3 pos = {0.0f, 0.0f, 0.0f};
-    glm::vec3 pos2 = {0.0f, 1.0f, 0.0f};
+    glm::vec3 pos2 = {0.0f, 0.0f, 4.0f};
     glm::vec3 color = {0.0f, 1.0f, 0.0f};
     glm::vec3 color2 = {1.0f, 1.0f, 1.0f};
     m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 0.6f, m_camera);
     m_Cube->init();
+    m_Cube->scale(5.0f);
     m_Cube2 = std::make_shared<Cube>(m_width, m_height, pos2, color2, 0.8f, m_camera);
-//    m_Cube2->init();
+    m_Cube2->init();
+    m_Cube2->scale(0.3f);
 }
 
 void TestSurface::setCameraDir(float x, float y, float z) {
@@ -71,8 +73,6 @@ void TestSurface::setQua(float w, float x, float y, float z) {
     camerInfo.m_dir = quat * __dir;
     camerInfo.m_up = quat * __up;
     m_camera->setCameraInfo(camerInfo);
-    m_Cube->updateCameraInfo(camerInfo);
-    auto projection = m_camera->getCameraProjection();
 }
 
 void TestSurface::renderLoop() {
@@ -90,7 +90,7 @@ void TestSurface::renderLoop() {
 
 void TestSurface::draw() {
     m_Cube->render();
-    // m_Cube2->render();
+    m_Cube2->render();
 }
 
 TestSurface* testSurface = nullptr;
