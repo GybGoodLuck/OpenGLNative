@@ -1,0 +1,43 @@
+[
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/object/Object.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/object/Object.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/object/Object.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/object/Cube.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/object/Cube.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/object/Cube.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/native-lib.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/native-lib.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/Camera.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/Camera.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/Camera.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/GLUtils.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/GLUtils.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/GLUtils.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/TextureLoader.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/TextureLoader.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/TextureLoader.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86_64",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=x86_64-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info  -fPIC   -o CMakeFiles/native-lib.dir/TestSurface.cpp.o -c /home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/TestSurface.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/TestSurface.cpp"
+}
+]

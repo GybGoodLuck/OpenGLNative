@@ -1,0 +1,9 @@
+# ninja log v5
+1	46	1566357278	CMakeFiles/native-lib.dir/GLUtils.cpp.o	cf2ffa2fb6aec271
+0	384	1566357278	CMakeFiles/native-lib.dir/Camera.cpp.o	a9ce0c168150220a
+0	434	1566357278	CMakeFiles/native-lib.dir/object/Cube.cpp.o	4496061517cc71dd
+0	456	1566357278	CMakeFiles/native-lib.dir/object/Object.cpp.o	5e44c38a60c31baf
+1	497	1566357278	CMakeFiles/native-lib.dir/native-lib.cpp.o	dc120202e22c4a0
+4	657	1566357278	CMakeFiles/native-lib.dir/TestSurface.cpp.o	165a26a1e6fdae88
+1	918	1566357279	CMakeFiles/native-lib.dir/TextureLoader.cpp.o	373ab6aa201f473c
+918	1075	1566357279	/home/yuanbin/workspace/OpenGLLight/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	a3027e6005f9ab7c

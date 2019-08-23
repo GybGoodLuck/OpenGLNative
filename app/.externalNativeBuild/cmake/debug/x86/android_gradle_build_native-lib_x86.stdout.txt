@@ -1,0 +1,8 @@
+[1/8] Building CXX object CMakeFiles/native-lib.dir/GLUtils.cpp.o
+[2/8] Building CXX object CMakeFiles/native-lib.dir/Camera.cpp.o
+[3/8] Building CXX object CMakeFiles/native-lib.dir/object/Object.cpp.o
+[4/8] Building CXX object CMakeFiles/native-lib.dir/object/Cube.cpp.o
+[5/8] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
+[6/8] Building CXX object CMakeFiles/native-lib.dir/TestSurface.cpp.o
+[7/8] Building CXX object CMakeFiles/native-lib.dir/TextureLoader.cpp.o
+[8/8] Linking CXX shared library /home/yuanbin/workspace/OpenGLLight/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so

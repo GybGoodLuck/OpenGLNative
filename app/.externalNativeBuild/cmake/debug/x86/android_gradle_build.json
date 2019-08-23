@@ -1,0 +1,71 @@
+{
+  "stringTable": {
+    "0": "/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86",
+    "1": "--target=i686-none-linux-android24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/../../external -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -O0 -fno-limit-debug-info -fPIC"
+  },
+  "buildFiles": [
+    "/home/yuanbin/tools/Android/Sdk/ndk-bundle/build/cmake/android.toolchain.cmake",
+    "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/CMakeLists.txt",
+    "/home/yuanbin/tools/Android/Sdk/ndk-bundle/build/cmake/platforms.cmake"
+  ],
+  "cleanCommands": [
+    "/home/yuanbin/tools/Android/Sdk/cmake/3.10.2.4988404/bin/cmake --build \"/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86\" --target clean"
+  ],
+  "libraries": {
+    "native-lib-Debug-x86": {
+      "buildCommand": "/home/yuanbin/tools/Android/Sdk/cmake/3.10.2.4988404/bin/cmake --build \"/home/yuanbin/workspace/OpenGLLight/app/.externalNativeBuild/cmake/debug/x86\" --target native-lib",
+      "buildType": "debug",
+      "toolchain": "2143764351",
+      "abi": "x86",
+      "artifactName": "native-lib",
+      "files": [
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/object/Object.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/object/Cube.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/native-lib.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/Camera.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/GLUtils.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/TextureLoader.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/home/yuanbin/workspace/OpenGLLight/app/src/main/cpp/TestSurface.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        }
+      ],
+      "headers": [],
+      "output": "/home/yuanbin/workspace/OpenGLLight/app/build/intermediates/cmake/debug/obj/x86/libnative-lib.so"
+    }
+  },
+  "toolchains": {
+    "2143764351": {
+      "cppCompilerExecutable": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+    }
+  },
+  "cFileExtensions": [],
+  "cppFileExtensions": [
+    "cpp"
+  ]
+}
