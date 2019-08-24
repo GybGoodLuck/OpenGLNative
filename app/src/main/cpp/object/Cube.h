@@ -17,8 +17,4 @@ public:
 
     void init() override ;
     void render() override ;
-
-private:
-    GLint m_program;
-    unsigned int mTextureID;
 };

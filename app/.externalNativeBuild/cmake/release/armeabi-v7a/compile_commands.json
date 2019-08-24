@@ -13,6 +13,12 @@
 
 {
   "directory": "/home/yuanbin/workspace/OpenGLNative/app/.externalNativeBuild/cmake/release/armeabi-v7a",
+  "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=armv7-none-linux-androideabi24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/background/Background.cpp.o -c /home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/background/Background.cpp",
+  "file": "/home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/background/Background.cpp"
+},
+
+{
+  "directory": "/home/yuanbin/workspace/OpenGLNative/app/.externalNativeBuild/cmake/release/armeabi-v7a",
   "command": "/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ --target=armv7-none-linux-androideabi24 --gcc-toolchain=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/home/yuanbin/tools/Android/Sdk/ndk-bundle/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -Dnative_lib_EXPORTS -I/home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/../../external  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -mfpu=vfpv3-d16 -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security -stdlib=libc++ -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/native-lib.cpp.o -c /home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/native-lib.cpp",
   "file": "/home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/native-lib.cpp"
 },

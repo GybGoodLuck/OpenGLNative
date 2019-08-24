@@ -47,17 +47,14 @@ void TestSurface::startRenderThread(ANativeWindow* window) {
     m_renderThread = std::thread(std::bind(&TestSurface::renderLoop, this));
 }
 
-void TestSurface::prepareTriangle() {
-    glm::vec3 pos = {0.0f, 0.0f, 0.0f};
-    glm::vec3 pos2 = {0.0f, 0.0f, 4.0f};
-    glm::vec3 color = {0.0f, 1.0f, 0.0f};
-    glm::vec3 color2 = {1.0f, 1.0f, 1.0f};
-    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 0.6f, m_camera);
+void TestSurface::prepare() {
+    m_Background = std::make_shared<Background>(m_width, m_height, m_camera);
+    glm::vec3 pos = {1, 1, 5};
+    glm::vec3 color = {1.0f, 0.6f, 0.5f};
+    glm::vec3 axis = {1.0f, 0.0f, 0.0f};
+    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 1.0f, m_camera);
     m_Cube->init();
-    m_Cube->scale(5.0f);
-    m_Cube2 = std::make_shared<Cube>(m_width, m_height, pos2, color2, 0.8f, m_camera);
-    m_Cube2->init();
-    m_Cube2->scale(0.3f);
+    m_Cube->rotate(axis, glm::radians(20.0f));
 }
 
 void TestSurface::setCameraDir(float x, float y, float z) {
@@ -70,6 +67,8 @@ void TestSurface::setQua(float w, float x, float y, float z) {
     quat.y = y;
     quat.z = -z;
     auto camerInfo = m_camera->getCameraInfo();
+    quat = glm::normalize(quat);
+    quat = glm::angleAxis(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * quat;
     camerInfo.m_dir = quat * __dir;
     camerInfo.m_up = quat * __up;
     m_camera->setCameraInfo(camerInfo);
@@ -77,7 +76,7 @@ void TestSurface::setQua(float w, float x, float y, float z) {
 
 void TestSurface::renderLoop() {
     initEGL();
-    prepareTriangle();
+    prepare();
     while (rendering) {
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
@@ -89,8 +88,8 @@ void TestSurface::renderLoop() {
 }
 
 void TestSurface::draw() {
+    m_Background->render();
     m_Cube->render();
-    m_Cube2->render();
 }
 
 TestSurface* testSurface = nullptr;

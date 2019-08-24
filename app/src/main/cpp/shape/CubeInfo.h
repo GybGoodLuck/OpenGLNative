@@ -8,7 +8,7 @@
 
 namespace CubeInfo {
 
-    float size = 1.0f;
+    float size = 0.3f;
 
     const GLfloat vertices[] = {
             size, size, size,   1.0f, 1.0f,
@@ -43,49 +43,49 @@ namespace CubeInfo {
             1, 6, 5
     };
 
-    float skyboxVertices[] = {
+    float cubeVertices[] = {
             // positions
-            -1.0f,  1.0f, -1.0f,
-            -1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f,  1.0f, -1.0f,
-            -1.0f,  1.0f, -1.0f,
+            -size,  size, -size,
+            -size,  -size, -size,
+            size,  -size, -size,
+            size,  -size, -size,
+            size,  size, -size,
+            -size,  size, -size,
 
-            -1.0f, -1.0f,  1.0f,
-            -1.0f, -1.0f, -1.0f,
-            -1.0f,  1.0f, -1.0f,
-            -1.0f,  1.0f, -1.0f,
-            -1.0f,  1.0f,  1.0f,
-            -1.0f, -1.0f,  1.0f,
+            -size, -size,  size,
+            -size,  -size, -size,
+            -size,  size, -size,
+            -size,  size, -size,
+            -size,  size,  size,
+            -size, -size,  size,
 
-            1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
+            size,  -size, -size,
+            size, -size,  size,
+            size,  size, size,
+            size,  size, size,
+            size,  size, -size,
+            size,  -size, -size,
 
-            -1.0f, -1.0f,  1.0f,
-            -1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f, -1.0f,  1.0f,
-            -1.0f, -1.0f,  1.0f,
+            -size, -size, size,
+            -size, size,  size,
+            size, size, size,
+            size, size, size,
+            size, -size, size,
+            -size, -size, size,
 
-            -1.0f,  1.0f, -1.0f,
-            1.0f,  1.0f, -1.0f,
-            1.0f,  1.0f,  1.0f,
-            1.0f,  1.0f,  1.0f,
-            -1.0f,  1.0f,  1.0f,
-            -1.0f,  1.0f, -1.0f,
+            -size, size, -size,
+            size, size, -size,
+            size, size, size,
+            size, size, size,
+            -size, size,  size,
+            -size,  size, -size,
 
-            -1.0f, -1.0f, -1.0f,
-            -1.0f, -1.0f,  1.0f,
-            1.0f, -1.0f, -1.0f,
-            1.0f, -1.0f, -1.0f,
-            -1.0f, -1.0f,  1.0f,
-            1.0f, -1.0f,  1.0f
+            -size,  -size, -size,
+            -size, -size,  size,
+            size,  -size, -size,
+            size,  -size, -size,
+            -size, -size,  size,
+            size, -size,  size
     };
 }
 

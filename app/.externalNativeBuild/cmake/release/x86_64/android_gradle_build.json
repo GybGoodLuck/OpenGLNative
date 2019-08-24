@@ -30,6 +30,11 @@
           "workingDirectoryOrdinal": 0
         },
         {
+          "src": "/home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/background/Background.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
           "src": "/home/yuanbin/workspace/OpenGLNative/app/src/main/cpp/native-lib.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0

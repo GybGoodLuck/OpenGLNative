@@ -12,8 +12,7 @@ Object::Object(int width, int height, const glm::vec3 &pos,
         : m_width(width), m_height(height), m_pos(pos),
           m_color(color), m_alpha(alpha), m_camera(camera) {
     updatePos(m_pos);
-    // updateCameraProjection(m_camera->getCameraProjection());
-    m_program = createProgram(gVertexShader, gFragmentShader);
+    m_program = createProgram(vertexShader, fragmentShader);
     getShaderParams();
 }
 
@@ -34,7 +33,6 @@ void Object::getShaderParams() {
     s_view = glGetUniformLocation(m_program, "view");
     s_transform = glGetUniformLocation(m_program, "transform");
     s_color = glGetUniformLocation(m_program, "color");
-    glUseProgram(m_program);
 }
 
 void Object::updateCamera() {

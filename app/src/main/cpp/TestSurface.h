@@ -13,6 +13,7 @@
 
 #include "ILog.h"
 #include "object/Cube.h"
+#include "background/Background.h"
 
 class TestSurface {
 
@@ -38,15 +39,14 @@ private:
     bool rendering = false;
 
     std::thread m_renderThread;
+    Background::Ptr m_Background;
     Cube::Ptr m_Cube, m_Cube2;
-
-    GLuint mTextureID;
 
     glm::vec3 __up = {0, 1, 0};
     glm::vec3 __dir = {0, 0, 1};
 
     void initEGL();
-    void prepareTriangle();
+    void prepare();
     void renderLoop();
     void draw();
 
