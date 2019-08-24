@@ -37,12 +37,12 @@ Background::Background(int width, int height, const Camera::Ptr &camera) : m_cam
 
 void Background::loadTexture() {
 
-    std::string bottom ("/system/iris/skybox/bottom.jpg");
-    std::string back ("/system/iris/skybox/back.jpg");
-    std::string front ("/system/iris/skybox/front.jpg");
-    std::string left ("/system/iris/skybox/left.jpg");
-    std::string right ("/system/iris/skybox/right.jpg");
-    std::string top ("/system/iris/skybox/top.jpg");
+    std::string bottom ("/sdcard/gldemo/bottom.jpg");
+    std::string back ("/sdcard/gldemo/back.jpg");
+    std::string front ("/sdcard/gldemo/front.jpg");
+    std::string left ("/sdcard/gldemo/left.jpg");
+    std::string right ("/sdcard/gldemo/right.jpg");
+    std::string top ("/sdcard/gldemo/top.jpg");
 
     faces.push_back(right);
     faces.push_back(left);

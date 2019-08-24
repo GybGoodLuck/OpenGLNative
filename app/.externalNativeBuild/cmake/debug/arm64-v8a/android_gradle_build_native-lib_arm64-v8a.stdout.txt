@@ -1,3 +1,2 @@
-[1/3] Building CXX object CMakeFiles/native-lib.dir/native-lib.cpp.o
-[2/3] Building CXX object CMakeFiles/native-lib.dir/TestSurface.cpp.o
-[3/3] Linking CXX shared library /home/yuanbin/workspace/OpenGLNative/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so
+[1/2] Building CXX object CMakeFiles/native-lib.dir/background/Background.cpp.o
+[2/2] Linking CXX shared library /home/yuanbin/workspace/OpenGLNative/app/build/intermediates/cmake/debug/obj/arm64-v8a/libnative-lib.so
