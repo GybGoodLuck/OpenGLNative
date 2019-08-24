@@ -65,3 +65,8 @@
 5	625	1566563933	CMakeFiles/native-lib.dir/TestSurface.cpp.o	20d5ded86fd1b97
 3	874	1566563934	CMakeFiles/native-lib.dir/TextureLoader.cpp.o	4563b7e2302d7e6
 874	1024	1566563934	/home/yuanbin/workspace/OpenGLNative/app/build/intermediates/cmake/debug/obj/x86_64/libnative-lib.so	37e7ed4c63cbf793
+5	411	1566636735	CMakeFiles/native-lib.dir/Camera.cpp.o	f2942a048dfc9b48
+1	502	1566636735	CMakeFiles/native-lib.dir/object/Object.cpp.o	cdd18e0af8f11100
+1	672	1566636735	CMakeFiles/native-lib.dir/object/Cube.cpp.o	39640a116d699e9a
+5	676	1566636735	CMakeFiles/native-lib.dir/native-lib.cpp.o	b4f993c679d8b388
+6	836	1566636735	CMakeFiles/native-lib.dir/TestSurface.cpp.o	20d5ded86fd1b97

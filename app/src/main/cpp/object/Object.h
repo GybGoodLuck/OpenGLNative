@@ -24,9 +24,8 @@ public:
     virtual void init() = 0;
     virtual void render() = 0;
 
-    void updatePos(const glm::vec3& pos);
-    void scale(float scale);
-    void rotate(const glm::vec3& axis, float radians);
+    void updatePos();
+    void scale();
     void updateRenderData();
     void updateCamera();
 
@@ -42,6 +41,14 @@ public:
 
     void setColor(const glm::vec3& color) {
         m_color = color;
+    }
+
+    glm::quat getQua() const {
+        return m_qua;
+    }
+
+    void setQua(const glm::quat& quat) {
+        m_qua = quat;
     }
 
     glm::vec3 getColor() const {
@@ -62,6 +69,8 @@ protected:
 
     Camera::Ptr m_camera;
     glm::vec3 m_pos;
+    glm::quat m_qua = {0.707, 0, 0.707, 0};
+    float m_scale = 1.0f;
     glm::vec3 m_color;
     float m_alpha;
 

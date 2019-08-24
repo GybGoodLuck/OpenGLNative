@@ -57,7 +57,6 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private float xDown, yDown;
     private void processTouchEvent(MotionEvent event){
 
         switch (event.getAction()) {
@@ -66,9 +65,6 @@ public class MainActivity extends AppCompatActivity {
             case MotionEvent.ACTION_UP:
                 break;
             case MotionEvent.ACTION_MOVE:
-                xDown = event.getX();
-                yDown = event.getY();
-                setCameraDir(xDown, yDown, 0);
                 break;
                 default:
                 break;
@@ -94,5 +90,4 @@ public class MainActivity extends AppCompatActivity {
      * which is packaged with this application.
      */
     public native void startRenderThread(Surface surface);
-    public native void setCameraDir(float x, float y, float z);
 }

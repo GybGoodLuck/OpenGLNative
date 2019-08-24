@@ -21,7 +21,6 @@ public:
     TestSurface();
     void startRenderThread(ANativeWindow* window);
 
-    void setCameraDir(float x, float y, float z);
     void setQua(float w, float x, float y, float z);
 
 private:
@@ -40,13 +39,17 @@ private:
 
     std::thread m_renderThread;
     Background::Ptr m_Background;
-    Cube::Ptr m_Cube, m_Cube2;
+    Cube::Ptr m_Cube;
 
     glm::vec3 __up = {0, 1, 0};
     glm::vec3 __dir = {0, 0, 1};
+    glm::quat m_quat;
+
+    std::mutex m_sensor_mutex;
 
     void initEGL();
     void prepare();
+    void update();
     void renderLoop();
     void draw();
 

@@ -54,10 +54,6 @@ void TestSurface::prepare() {
     glm::vec3 axis = {1.0f, 0.0f, 0.0f};
     m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 1.0f, m_camera);
     m_Cube->init();
-    m_Cube->rotate(axis, glm::radians(20.0f));
-}
-
-void TestSurface::setCameraDir(float x, float y, float z) {
 }
 
 void TestSurface::setQua(float w, float x, float y, float z) {
@@ -66,18 +62,17 @@ void TestSurface::setQua(float w, float x, float y, float z) {
     quat.x = -x;
     quat.y = y;
     quat.z = -z;
-    auto camerInfo = m_camera->getCameraInfo();
-    quat = glm::normalize(quat);
-    quat = glm::angleAxis(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * quat;
-    camerInfo.m_dir = quat * __dir;
-    camerInfo.m_up = quat * __up;
-    m_camera->setCameraInfo(camerInfo);
+    {
+        std::lock_guard<std::mutex> locke(m_sensor_mutex);
+        m_quat = quat;
+    }
 }
 
 void TestSurface::renderLoop() {
     initEGL();
     prepare();
     while (rendering) {
+        update();
         glClearColor(0, 0, 0, 1);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
         glEnable(GL_DEPTH_TEST);
@@ -85,6 +80,21 @@ void TestSurface::renderLoop() {
         eglSwapBuffers(m_display, m_surface);
         std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
+}
+
+void TestSurface::update() {
+    glm::quat qua;
+    {
+        std::lock_guard<std::mutex> locke(m_sensor_mutex);
+        qua = m_quat;
+    }
+    auto camerInfo = m_camera->getCameraInfo();
+    qua = glm::normalize(qua);
+    qua = glm::angleAxis(glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f)) * qua;
+    camerInfo.m_dir = qua * __dir;
+    camerInfo.m_up = qua * __up;
+    m_camera->setCameraInfo(camerInfo);
+    m_Cube->setQua(qua);
 }
 
 void TestSurface::draw() {

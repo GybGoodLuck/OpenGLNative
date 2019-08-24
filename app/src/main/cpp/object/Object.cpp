@@ -11,21 +11,17 @@ Object::Object(int width, int height, const glm::vec3 &pos,
         const glm::vec3 &color, float alpha, const Camera::Ptr &camera)
         : m_width(width), m_height(height), m_pos(pos),
           m_color(color), m_alpha(alpha), m_camera(camera) {
-    updatePos(m_pos);
     m_program = createProgram(vertexShader, fragmentShader);
     getShaderParams();
+    m_qua = glm::angleAxis(glm::radians(90.0f), glm::normalize(glm::vec3(1.0f, 1.0f, 0.0f)));
 }
 
-void Object::updatePos(const glm::vec3& pos) {
-    m_transform = glm::translate(m_transform, pos);
+void Object::updatePos() {
+    m_transform = glm::translate(m_transform, m_pos);
 }
 
-void Object::scale(float scale) {
-    m_transform = glm::scale(m_transform, {scale, scale, scale});
-}
-
-void Object::rotate(const glm::vec3& axis, float radians) {
-    m_transform = glm::rotate(m_transform, radians, axis);
+void Object::scale() {
+    m_transform = glm::scale(m_transform, {m_scale, m_scale, m_scale});
 }
 
 void Object::getShaderParams() {
@@ -46,6 +42,10 @@ void Object::updateCamera() {
 }
 
 void Object::updateRenderData() {
+    m_transform = glm::mat4();
+    updatePos();
+    m_transform = m_transform * glm::mat4_cast(m_qua);
+    scale();
     updateCamera();
     glUniformMatrix4fv(s_projection, 1, GL_FALSE, glm::value_ptr(m_projection));
     glUniformMatrix4fv(s_view, 1, GL_FALSE, glm::value_ptr(m_view));
