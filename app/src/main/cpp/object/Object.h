@@ -76,7 +76,7 @@ protected:
 
     Camera::Ptr m_camera;
     glm::vec3 m_pos;
-    glm::quat m_qua = {0.707, 0, 0.707, 0};
+    glm::quat m_qua = {0, 0, 0, 1};
     glm::vec3 m_scale = {1.0f, 1.0f, 1.0f};
     glm::vec3 m_color;
     float m_alpha;

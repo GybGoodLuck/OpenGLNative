@@ -14,6 +14,7 @@
 #include "ILog.h"
 #include "object/Cube.h"
 #include "object/LightCube.h"
+#include "object/Circle.h"
 #include "background/Background.h"
 
 class TestSurface {
@@ -44,6 +45,7 @@ private:
     Background::Ptr m_Background;
     Cube::Ptr m_Cube;
     LightCube::Ptr m_lightCube;
+    Circle::Ptr m_circle;
 
     glm::vec3 __up = {0, 1, 0};
     glm::vec3 __dir = {0, 0, 1};

@@ -56,7 +56,7 @@ void TestSurface::prepare() {
     glm::vec3 pos = {1, 1, 5};
     glm::vec3 color = {0.8f, 0.5f, 0.2f};
     glm::vec3 scale = {1.0f, 1.5f, 1.0f};
-    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 0.1f, m_camera);
+    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 1.0f, m_camera);
     m_Cube->init();
     m_Cube->setScale(scale);
 
@@ -64,6 +64,11 @@ void TestSurface::prepare() {
     glm::vec3 lColor = {0.8f, 0.5f, 0.2f};
     m_lightCube = std::make_shared<LightCube>(m_width, m_height, lPos, lColor, 1.0f, m_camera, m_light);
     m_lightCube->init();
+
+    glm::vec3 cPos = {0, 0, 8};
+    glm::vec3 cColor = {0.6f, 0.6f, 0.2f};
+    m_circle = std::make_shared<Circle>(m_width, m_height, cPos, cColor, 1.0f, m_camera);
+    m_circle->init();
 }
 
 void TestSurface::setQua(float w, float x, float y, float z) {
@@ -114,6 +119,7 @@ void TestSurface::draw() {
     m_Background->render();
     m_Cube->render();
     m_lightCube->render();
+    m_circle->render();
 }
 
 TestSurface* testSurface = nullptr;

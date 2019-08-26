@@ -11,15 +11,15 @@ namespace CubeInfo {
     static float size = 0.3f;
 
     static const GLfloat vertices[] = {
-            size, size, size,   1.0f, 1.0f,
-            size, -size, size,  1.0f, 0.0f,
-            -size, -size, size, 0.0f, 0.0f,
-            -size, size, size,  0.0f, 1.0f,
+        size, size, size,   1.0f, 1.0f,
+        size, -size, size,  1.0f, 0.0f,
+        -size, -size, size, 0.0f, 0.0f,
+        -size, size, size,  0.0f, 1.0f,
 
-            size, size, -size,   1.0f, 1.0f,
-            size, -size, -size,  1.0f, 0.0f,
-            -size, -size, -size, 0.0f, 0.0f,
-            -size, size, -size,  0.0f, 1.0f
+        size, size, -size,   1.0f, 1.0f,
+        size, -size, -size,  1.0f, 0.0f,
+        -size, -size, -size, 0.0f, 0.0f,
+        -size, size, -size,  0.0f, 1.0f
     };
 
     static unsigned int indices[] = {
@@ -43,7 +43,7 @@ namespace CubeInfo {
             1, 6, 5
     };
 
-    static float cubeVertices[] = {
+    static const float cubeVertices[] = {
         // positions
         -size,  size, -size,
         -size, -size, -size,
@@ -89,47 +89,47 @@ namespace CubeInfo {
     };
 
     static const GLfloat normal_vertices[] = {
-            -size, -size, -size,  0.0f,  0.0f, -1.0f,
-             size, -size, -size,  0.0f,  0.0f, -1.0f,
-             size,  size, -size,  0.0f,  0.0f, -1.0f,
-             size,  size, -size,  0.0f,  0.0f, -1.0f,
-            -size,  size, -size,  0.0f,  0.0f, -1.0f,
-            -size, -size, -size,  0.0f,  0.0f, -1.0f,
+        -size, -size, -size,  0.0f,  0.0f, -1.0f,
+         size, -size, -size,  0.0f,  0.0f, -1.0f,
+         size,  size, -size,  0.0f,  0.0f, -1.0f,
+         size,  size, -size,  0.0f,  0.0f, -1.0f,
+        -size,  size, -size,  0.0f,  0.0f, -1.0f,
+        -size, -size, -size,  0.0f,  0.0f, -1.0f,
 
-            -size, -size,  size,  0.0f,  0.0f,  1.0f,
-             size, -size,  size,  0.0f,  0.0f,  1.0f,
-             size,  size,  size,  0.0f,  0.0f,  1.0f,
-             size,  size,  size,  0.0f,  0.0f,  1.0f,
-            -size,  size,  size,  0.0f,  0.0f,  1.0f,
-            -size, -size,  size,  0.0f,  0.0f,  1.0f,
+        -size, -size,  size,  0.0f,  0.0f,  1.0f,
+         size, -size,  size,  0.0f,  0.0f,  1.0f,
+         size,  size,  size,  0.0f,  0.0f,  1.0f,
+         size,  size,  size,  0.0f,  0.0f,  1.0f,
+        -size,  size,  size,  0.0f,  0.0f,  1.0f,
+        -size, -size,  size,  0.0f,  0.0f,  1.0f,
 
-            -size,  size,  size, -1.0f,  0.0f,  0.0f,
-            -size,  size, -size, -1.0f,  0.0f,  0.0f,
-            -size, -size, -size, -1.0f,  0.0f,  0.0f,
-            -size, -size, -size, -1.0f,  0.0f,  0.0f,
-            -size, -size,  size, -1.0f,  0.0f,  0.0f,
-            -size,  size,  size, -1.0f,  0.0f,  0.0f,
+        -size,  size,  size, -1.0f,  0.0f,  0.0f,
+        -size,  size, -size, -1.0f,  0.0f,  0.0f,
+        -size, -size, -size, -1.0f,  0.0f,  0.0f,
+        -size, -size, -size, -1.0f,  0.0f,  0.0f,
+        -size, -size,  size, -1.0f,  0.0f,  0.0f,
+        -size,  size,  size, -1.0f,  0.0f,  0.0f,
 
-            size,  size,  size,  1.0f,  0.0f,  0.0f,
-            size,  size, -size,  1.0f,  0.0f,  0.0f,
-            size, -size, -size,  1.0f,  0.0f,  0.0f,
-            size, -size, -size,  1.0f,  0.0f,  0.0f,
-            size, -size,  size,  1.0f,  0.0f,  0.0f,
-            size,  size,  size,  1.0f,  0.0f,  0.0f,
+        size,  size,  size,  1.0f,  0.0f,  0.0f,
+        size,  size, -size,  1.0f,  0.0f,  0.0f,
+        size, -size, -size,  1.0f,  0.0f,  0.0f,
+        size, -size, -size,  1.0f,  0.0f,  0.0f,
+        size, -size,  size,  1.0f,  0.0f,  0.0f,
+        size,  size,  size,  1.0f,  0.0f,  0.0f,
 
-            -size, -size, -size,  0.0f, -1.0f,  0.0f,
-             size, -size, -size,  0.0f, -1.0f,  0.0f,
-             size, -size,  size,  0.0f, -1.0f,  0.0f,
-             size, -size,  size,  0.0f, -1.0f,  0.0f,
-            -size, -size,  size,  0.0f, -1.0f,  0.0f,
-            -size, -size, -size,  0.0f, -1.0f,  0.0f,
+        -size, -size, -size,  0.0f, -1.0f,  0.0f,
+         size, -size, -size,  0.0f, -1.0f,  0.0f,
+         size, -size,  size,  0.0f, -1.0f,  0.0f,
+         size, -size,  size,  0.0f, -1.0f,  0.0f,
+        -size, -size,  size,  0.0f, -1.0f,  0.0f,
+        -size, -size, -size,  0.0f, -1.0f,  0.0f,
 
-            -size,  size, -size,  0.0f,  1.0f,  0.0f,
-             size,  size, -size,  0.0f,  1.0f,  0.0f,
-             size,  size,  size,  0.0f,  1.0f,  0.0f,
-             size,  size,  size,  0.0f,  1.0f,  0.0f,
-            -size,  size,  size,  0.0f,  1.0f,  0.0f,
-            -size,  size, -size,  0.0f,  1.0f,  0.0f
+        -size,  size, -size,  0.0f,  1.0f,  0.0f,
+         size,  size, -size,  0.0f,  1.0f,  0.0f,
+         size,  size,  size,  0.0f,  1.0f,  0.0f,
+         size,  size,  size,  0.0f,  1.0f,  0.0f,
+        -size,  size,  size,  0.0f,  1.0f,  0.0f,
+        -size,  size, -size,  0.0f,  1.0f,  0.0f
     };
 }
 
