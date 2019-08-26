@@ -1,18 +1,15 @@
 //
-// Created by yuanbin on 19-8-9.
+// Created by yuanbin on 19-8-26.
 //
 
 #pragma once
 
-#include <android/log.h>
-
 #include "Object.h"
-#include "../ILog.h"
 
-class Cube : public Object {
+class LightCube : public LightObject {
 
 public:
-    using Object::Object;
+    using LightObject::LightObject;
 
     void init() override ;
     void render() override ;

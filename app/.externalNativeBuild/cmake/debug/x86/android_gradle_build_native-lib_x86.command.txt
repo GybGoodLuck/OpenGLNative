@@ -1,8 +1,0 @@
-Executable : /home/yuanbin/tools/Android/Sdk/cmake/3.10.2.4988404/bin/cmake
-arguments : 
---build
-/home/yuanbin/workspace/OpenGLNative/app/.externalNativeBuild/cmake/debug/x86
---target
-native-lib
-jvmArgs : 
-

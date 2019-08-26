@@ -13,6 +13,7 @@
 
 #include "ILog.h"
 #include "object/Cube.h"
+#include "object/LightCube.h"
 #include "background/Background.h"
 
 class TestSurface {
@@ -32,6 +33,8 @@ private:
     ANativeWindow* aNativeWindow;
 
     Camera::Ptr m_camera;
+    Light::Ptr m_light;
+
     int m_width;
     int m_height;
 
@@ -40,6 +43,7 @@ private:
     std::thread m_renderThread;
     Background::Ptr m_Background;
     Cube::Ptr m_Cube;
+    LightCube::Ptr m_lightCube;
 
     glm::vec3 __up = {0, 1, 0};
     glm::vec3 __dir = {0, 0, 1};

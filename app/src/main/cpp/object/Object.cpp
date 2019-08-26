@@ -12,8 +12,10 @@ Object::Object(int width, int height, const glm::vec3 &pos,
         : m_width(width), m_height(height), m_pos(pos),
           m_color(color), m_alpha(alpha), m_camera(camera) {
     m_program = createProgram(vertexShader, fragmentShader);
-    getShaderParams();
-    m_qua = glm::angleAxis(glm::radians(90.0f), glm::normalize(glm::vec3(1.0f, 1.0f, 0.0f)));
+    s_projection = glGetUniformLocation(m_program, "projection");
+    s_view = glGetUniformLocation(m_program, "view");
+    s_transform = glGetUniformLocation(m_program, "transform");
+    s_color = glGetUniformLocation(m_program, "color");
 }
 
 void Object::updatePos() {
@@ -22,13 +24,6 @@ void Object::updatePos() {
 
 void Object::scale() {
     m_transform = glm::scale(m_transform, {m_scale, m_scale, m_scale});
-}
-
-void Object::getShaderParams() {
-    s_projection =  glGetUniformLocation(m_program, "projection");
-    s_view = glGetUniformLocation(m_program, "view");
-    s_transform = glGetUniformLocation(m_program, "transform");
-    s_color = glGetUniformLocation(m_program, "color");
 }
 
 void Object::updateCamera() {
@@ -51,4 +46,28 @@ void Object::updateRenderData() {
     glUniformMatrix4fv(s_view, 1, GL_FALSE, glm::value_ptr(m_view));
     glUniformMatrix4fv(s_transform, 1, GL_FALSE, glm::value_ptr(m_transform));
     glUniform4f(s_color, m_color[0], m_color[1], m_color[2], m_alpha);
+}
+
+LightObject::LightObject(int width, int height, const glm::vec3 &pos, const glm::vec3 &color,
+                         float alpha, const Camera::Ptr &camera, const Light::Ptr &light)
+                         : Object(width, height, pos, color, alpha, camera), m_light(light) {
+    m_program = createProgram(lightVertexShader, lightFragmentShader);
+    s_projection = glGetUniformLocation(m_program, "projection");
+    s_view = glGetUniformLocation(m_program, "view");
+    s_transform = glGetUniformLocation(m_program, "transform");
+    s_color = glGetUniformLocation(m_program, "color");
+
+    s_light_pos = glGetUniformLocation(m_program, "lightPos");
+    s_light_color = glGetUniformLocation(m_program, "lightColor");
+
+    s_camera_pos = glGetUniformLocation(m_program, "cameraPos");
+}
+
+void LightObject::updateLight() {
+    auto lightPos = m_light->getPos();
+    auto lightColor = m_light->getColor();
+    auto cameraPos = m_camera->getCameraInfo().m_pos;
+    glUniform3f(s_light_pos, lightPos.x, lightPos.y, lightPos.z);
+    glUniform3f(s_light_color, lightColor.x, lightColor.y, lightColor.z);
+    glUniform3f(s_camera_pos, cameraPos.x, cameraPos.y, cameraPos.z);
 }

@@ -7,6 +7,10 @@
 
 TestSurface::TestSurface() {
     m_camera = std::make_shared<Camera>();
+
+    glm::vec3 pos = {1, -4, 2};
+    glm::vec3 color = {0.6f, 0.5f, 0.5f};
+    m_light = std::make_shared<Light>(pos, color);
 }
 
 void TestSurface::initEGL() {
@@ -51,9 +55,13 @@ void TestSurface::prepare() {
     m_Background = std::make_shared<Background>(m_width, m_height, m_camera);
     glm::vec3 pos = {1, 1, 5};
     glm::vec3 color = {1.0f, 0.6f, 0.5f};
-    glm::vec3 axis = {1.0f, 0.0f, 0.0f};
     m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 1.0f, m_camera);
     m_Cube->init();
+
+    glm::vec3 lPos = {2, -3, 6};
+    glm::vec3 lColor = {0.8f, 0.5f, 0.2f};
+    m_lightCube = std::make_shared<LightCube>(m_width, m_height, lPos, lColor, 1.0f, m_camera, m_light);
+    m_lightCube->init();
 }
 
 void TestSurface::setQua(float w, float x, float y, float z) {
@@ -95,11 +103,15 @@ void TestSurface::update() {
     camerInfo.m_up = qua * __up;
     m_camera->setCameraInfo(camerInfo);
     m_Cube->setQua(qua);
+
+    auto lightQua = glm::angleAxis(glm::radians(0.2f), glm::vec3(1.0f, 1.0f, 0.0f)) * m_lightCube->getQua();
+    m_lightCube->setQua(lightQua);
 }
 
 void TestSurface::draw() {
     m_Background->render();
     m_Cube->render();
+    m_lightCube->render();
 }
 
 TestSurface* testSurface = nullptr;

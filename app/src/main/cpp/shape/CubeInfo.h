@@ -8,9 +8,9 @@
 
 namespace CubeInfo {
 
-    float size = 0.3f;
+    static float size = 0.3f;
 
-    const GLfloat vertices[] = {
+    static const GLfloat vertices[] = {
             size, size, size,   1.0f, 1.0f,
             size, -size, size,  1.0f, 0.0f,
             -size, -size, size, 0.0f, 0.0f,
@@ -22,7 +22,7 @@ namespace CubeInfo {
             -size, size, -size,  0.0f, 1.0f
     };
 
-    unsigned int indices[] = {
+    static unsigned int indices[] = {
 
             0, 4, 1,
             1, 4, 5,
@@ -43,49 +43,93 @@ namespace CubeInfo {
             1, 6, 5
     };
 
-    float cubeVertices[] = {
-            // positions
-            -size,  size, -size,
-            -size,  -size, -size,
-            size,  -size, -size,
-            size,  -size, -size,
-            size,  size, -size,
-            -size,  size, -size,
+    static float cubeVertices[] = {
+        // positions
+        -size,  size, -size,
+        -size, -size, -size,
+         size, -size, -size,
+         size, -size, -size,
+         size,  size, -size,
+        -size,  size, -size,
 
-            -size, -size,  size,
-            -size,  -size, -size,
-            -size,  size, -size,
-            -size,  size, -size,
-            -size,  size,  size,
-            -size, -size,  size,
+        -size, -size,  size,
+        -size, -size, -size,
+        -size,  size, -size,
+        -size,  size, -size,
+        -size,  size,  size,
+        -size, -size,  size,
 
-            size,  -size, -size,
-            size, -size,  size,
-            size,  size, size,
-            size,  size, size,
-            size,  size, -size,
-            size,  -size, -size,
+         size, -size, -size,
+         size, -size,  size,
+         size,  size,  size,
+         size,  size,  size,
+         size,  size, -size,
+         size, -size, -size,
 
-            -size, -size, size,
-            -size, size,  size,
-            size, size, size,
-            size, size, size,
-            size, -size, size,
-            -size, -size, size,
+        -size, -size, size,
+        -size,  size, size,
+         size,  size, size,
+         size,  size, size,
+         size, -size, size,
+        -size, -size, size,
 
-            -size, size, -size,
-            size, size, -size,
-            size, size, size,
-            size, size, size,
-            -size, size,  size,
-            -size,  size, -size,
+        -size, size, -size,
+         size, size, -size,
+         size, size,  size,
+         size, size,  size,
+        -size, size,  size,
+        -size, size, -size,
 
-            -size,  -size, -size,
-            -size, -size,  size,
-            size,  -size, -size,
-            size,  -size, -size,
-            -size, -size,  size,
-            size, -size,  size
+        -size, -size, -size,
+        -size, -size,  size,
+         size, -size, -size,
+         size, -size, -size,
+        -size, -size,  size,
+         size, -size,  size
+    };
+
+    static const GLfloat normal_vertices[] = {
+            -size, -size, -size,  0.0f,  0.0f, -1.0f,
+             size, -size, -size,  0.0f,  0.0f, -1.0f,
+             size,  size, -size,  0.0f,  0.0f, -1.0f,
+             size,  size, -size,  0.0f,  0.0f, -1.0f,
+            -size,  size, -size,  0.0f,  0.0f, -1.0f,
+            -size, -size, -size,  0.0f,  0.0f, -1.0f,
+
+            -size, -size,  size,  0.0f,  0.0f,  1.0f,
+             size, -size,  size,  0.0f,  0.0f,  1.0f,
+             size,  size,  size,  0.0f,  0.0f,  1.0f,
+             size,  size,  size,  0.0f,  0.0f,  1.0f,
+            -size,  size,  size,  0.0f,  0.0f,  1.0f,
+            -size, -size,  size,  0.0f,  0.0f,  1.0f,
+
+            -size,  size,  size, -1.0f,  0.0f,  0.0f,
+            -size,  size, -size, -1.0f,  0.0f,  0.0f,
+            -size, -size, -size, -1.0f,  0.0f,  0.0f,
+            -size, -size, -size, -1.0f,  0.0f,  0.0f,
+            -size, -size,  size, -1.0f,  0.0f,  0.0f,
+            -size,  size,  size, -1.0f,  0.0f,  0.0f,
+
+            size,  size,  size,  1.0f,  0.0f,  0.0f,
+            size,  size, -size,  1.0f,  0.0f,  0.0f,
+            size, -size, -size,  1.0f,  0.0f,  0.0f,
+            size, -size, -size,  1.0f,  0.0f,  0.0f,
+            size, -size,  size,  1.0f,  0.0f,  0.0f,
+            size,  size,  size,  1.0f,  0.0f,  0.0f,
+
+            -size, -size, -size,  0.0f, -1.0f,  0.0f,
+             size, -size, -size,  0.0f, -1.0f,  0.0f,
+             size, -size,  size,  0.0f, -1.0f,  0.0f,
+             size, -size,  size,  0.0f, -1.0f,  0.0f,
+            -size, -size,  size,  0.0f, -1.0f,  0.0f,
+            -size, -size, -size,  0.0f, -1.0f,  0.0f,
+
+            -size,  size, -size,  0.0f,  1.0f,  0.0f,
+             size,  size, -size,  0.0f,  1.0f,  0.0f,
+             size,  size,  size,  0.0f,  1.0f,  0.0f,
+             size,  size,  size,  0.0f,  1.0f,  0.0f,
+            -size,  size,  size,  0.0f,  1.0f,  0.0f,
+            -size,  size, -size,  0.0f,  1.0f,  0.0f
     };
 }
 

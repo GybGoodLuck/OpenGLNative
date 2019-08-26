@@ -11,6 +11,7 @@
 #include <GLES3/gl3.h>
 
 #include "../Camera.h"
+#include "../Light.h"
 
 class Object {
 
@@ -28,8 +29,6 @@ public:
     void scale();
     void updateRenderData();
     void updateCamera();
-
-    void getShaderParams();
 
     void setPos(const glm::vec3& pos) {
         m_pos = pos;
@@ -84,4 +83,27 @@ protected:
     GLint s_color;
 
     GLint m_program;
+};
+
+class LightObject : public Object {
+
+public:
+    LightObject(int width, int height, const glm::vec3& pos,
+                const glm::vec3 &color, float alpha,
+                const Camera::Ptr& camera, const Light::Ptr& light);
+
+    virtual ~LightObject() {}
+
+    void init() override {};
+    void render() override {};
+
+    void updateLight();
+
+protected:
+    GLint s_light_pos;
+    GLint s_light_color;
+
+    GLint s_camera_pos;
+
+    Light::Ptr m_light;
 };

@@ -21,9 +21,11 @@ add_library( # Sets the name of the library.
         # Provides a relative path to your source file(s).
         object/Object.cpp
         object/Cube.cpp
+        object/LightCube.cpp
         background/Background.cpp
         native-lib.cpp
         Camera.cpp
+        Light.cpp
         GLUtils.cpp
         TextureLoader.cpp
         TestSurface.cpp)

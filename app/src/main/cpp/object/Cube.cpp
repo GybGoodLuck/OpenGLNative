@@ -5,13 +5,9 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/type_ptr.hpp>
-#include <string>
 #include "Cube.h"
 
 #include "../shape/CubeInfo.h"
-#include "../TexttureLoader.h"
-
-unsigned int VBO, VAO;
 
 void Cube::init() {
     glViewport(0, 0, m_width, m_height);
