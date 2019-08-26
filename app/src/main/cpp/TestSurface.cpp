@@ -54,9 +54,11 @@ void TestSurface::startRenderThread(ANativeWindow* window) {
 void TestSurface::prepare() {
     m_Background = std::make_shared<Background>(m_width, m_height, m_camera);
     glm::vec3 pos = {1, 1, 5};
-    glm::vec3 color = {1.0f, 0.6f, 0.5f};
-    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 1.0f, m_camera);
+    glm::vec3 color = {0.8f, 0.5f, 0.2f};
+    glm::vec3 scale = {1.0f, 1.5f, 1.0f};
+    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 0.1f, m_camera);
     m_Cube->init();
+    m_Cube->setScale(scale);
 
     glm::vec3 lPos = {2, -3, 6};
     glm::vec3 lColor = {0.8f, 0.5f, 0.2f};

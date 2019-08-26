@@ -62,6 +62,14 @@ public:
         return m_alpha;
     }
 
+    void setScale(glm::vec3 scale) {
+        m_scale = scale;
+    }
+
+    glm::vec3 getScale() {
+        return m_scale;
+    }
+
 protected:
     int m_width;
     int m_height;
@@ -69,7 +77,7 @@ protected:
     Camera::Ptr m_camera;
     glm::vec3 m_pos;
     glm::quat m_qua = {0.707, 0, 0.707, 0};
-    float m_scale = 1.0f;
+    glm::vec3 m_scale = {1.0f, 1.0f, 1.0f};
     glm::vec3 m_color;
     float m_alpha;
 
