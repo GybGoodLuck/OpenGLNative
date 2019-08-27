@@ -90,7 +90,7 @@ protected:
     GLint s_transform;
     GLint s_color;
 
-    GLint m_program;
+    GLuint m_program;
 };
 
 class LightObject : public Object {

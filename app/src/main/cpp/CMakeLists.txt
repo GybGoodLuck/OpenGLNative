@@ -23,6 +23,7 @@ add_library( # Sets the name of the library.
         object/Cube.cpp
         object/LightCube.cpp
         object/Circle.cpp
+        object/Sphere.cpp
         background/Background.cpp
         native-lib.cpp
         Camera.cpp

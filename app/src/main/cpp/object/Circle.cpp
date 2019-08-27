@@ -8,8 +8,8 @@
 #include "../shape/CubeInfo.h"
 
 void Circle::init() {
-    float* vertices = new float[m_count * 3];
-    float delta = static_cast<float>(2.0 * M_PI / m_count);
+    auto* vertices = new float[m_count * 3];
+    auto delta = static_cast<float>(2.0 * M_PI / m_count);
 
     for (int i = 0; i < m_count * 3;) {
         vertices[i] = m_r * cos(delta * i);     // x

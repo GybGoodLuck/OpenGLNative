@@ -11,7 +11,7 @@ Object::Object(int width, int height, const glm::vec3 &pos,
         const glm::vec3 &color, float alpha, const Camera::Ptr &camera)
         : m_width(width), m_height(height), m_pos(pos),
           m_color(color), m_alpha(alpha), m_camera(camera) {
-    m_program = createProgram(vertexShader, fragmentShader);
+    m_program = (GLuint)createProgram(vertexShader, fragmentShader);
     s_projection = glGetUniformLocation(m_program, "projection");
     s_view = glGetUniformLocation(m_program, "view");
     s_transform = glGetUniformLocation(m_program, "transform");
@@ -51,7 +51,7 @@ void Object::updateRenderData() {
 LightObject::LightObject(int width, int height, const glm::vec3 &pos, const glm::vec3 &color,
                          float alpha, const Camera::Ptr &camera, const Light::Ptr &light)
                          : Object(width, height, pos, color, alpha, camera), m_light(light) {
-    m_program = createProgram(lightVertexShader, lightFragmentShader);
+    m_program = (GLuint)createProgram(lightVertexShader, lightFragmentShader);
     s_projection = glGetUniformLocation(m_program, "projection");
     s_view = glGetUniformLocation(m_program, "view");
     s_transform = glGetUniformLocation(m_program, "transform");

@@ -69,6 +69,13 @@ void TestSurface::prepare() {
     glm::vec3 cColor = {0.6f, 0.6f, 0.2f};
     m_circle = std::make_shared<Circle>(m_width, m_height, cPos, cColor, 1.0f, m_camera);
     m_circle->init();
+
+    glm::vec3 sPos = {3, -0.5, 6};
+    glm::vec3 sColor = {0.8f, 0.5f, 0.2f};
+    glm::vec3 sScale = {0.6f, 0.6f, 0.6f};
+    m_sphere = std::make_shared<Sphere>(m_width, m_height, sPos, sColor, 1.0f, m_camera, m_light);
+    m_sphere->init();
+    m_sphere->setScale(sScale);
 }
 
 void TestSurface::setQua(float w, float x, float y, float z) {
@@ -120,6 +127,7 @@ void TestSurface::draw() {
     m_Cube->render();
     m_lightCube->render();
     m_circle->render();
+    m_sphere->render();
 }
 
 TestSurface* testSurface = nullptr;
