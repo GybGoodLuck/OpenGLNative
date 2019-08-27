@@ -9,7 +9,7 @@ TestSurface::TestSurface() {
     m_camera = std::make_shared<Camera>();
 
     glm::vec3 pos = {1, -4, 2};
-    glm::vec3 color = {0.6f, 0.5f, 0.5f};
+    glm::vec3 color = {1.0f, 1.0f, 1.0f};
     m_light = std::make_shared<Light>(pos, color);
 }
 
@@ -70,9 +70,9 @@ void TestSurface::prepare() {
     m_circle = std::make_shared<Circle>(m_width, m_height, cPos, cColor, 1.0f, m_camera);
     m_circle->init();
 
-    glm::vec3 sPos = {3, -0.5, 6};
-    glm::vec3 sColor = {0.8f, 0.5f, 0.2f};
-    glm::vec3 sScale = {0.6f, 0.6f, 0.6f};
+    glm::vec3 sPos = {5, 1, 6};
+    glm::vec3 sColor = {0.8f, 0.2f, 0.2f};
+    glm::vec3 sScale = {0.8f, 0.8f, 0.8f};
     m_sphere = std::make_shared<Sphere>(m_width, m_height, sPos, sColor, 1.0f, m_camera, m_light);
     m_sphere->init();
     m_sphere->setScale(sScale);
@@ -100,7 +100,6 @@ void TestSurface::renderLoop() {
         glEnable(GL_DEPTH_TEST);
         draw();
         eglSwapBuffers(m_display, m_surface);
-        std::this_thread::sleep_for(std::chrono::milliseconds(16));
     }
 }
 
