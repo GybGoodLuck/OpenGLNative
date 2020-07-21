@@ -49,8 +49,9 @@ void Object::updateRenderData() {
 }
 
 LightObject::LightObject(int width, int height, const glm::vec3 &pos, const glm::vec3 &color,
-                         float alpha, const Camera::Ptr &camera, const Light::Ptr &light)
-                         : Object(width, height, pos, color, alpha, camera), m_light(light) {
+                         float alpha, const Camera::Ptr &camera, const Light::Ptr &light, bool blinn)
+                         : Object(width, height, pos, color, alpha, camera),
+                         m_light(light), m_blinn(blinn) {
     m_program = (GLuint)createProgram(lightVertexShader, lightFragmentShader);
     s_projection = glGetUniformLocation(m_program, "projection");
     s_view = glGetUniformLocation(m_program, "view");
@@ -59,6 +60,7 @@ LightObject::LightObject(int width, int height, const glm::vec3 &pos, const glm:
 
     s_light_pos = glGetUniformLocation(m_program, "lightPos");
     s_light_color = glGetUniformLocation(m_program, "lightColor");
+    s_blinn = glGetUniformLocation(m_program, "blinn");
 
     s_camera_pos = glGetUniformLocation(m_program, "cameraPos");
 }
@@ -69,5 +71,6 @@ void LightObject::updateLight() {
     auto cameraPos = m_camera->getCameraInfo().m_pos;
     glUniform3f(s_light_pos, lightPos.x, lightPos.y, lightPos.z);
     glUniform3f(s_light_color, lightColor.x, lightColor.y, lightColor.z);
+    glUniform1i(s_blinn, m_blinn);
     glUniform3f(s_camera_pos, cameraPos.x, cameraPos.y, cameraPos.z);
 }

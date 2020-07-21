@@ -16,6 +16,7 @@
 #include "object/LightCube.h"
 #include "object/Circle.h"
 #include "object/Sphere.h"
+#include "object/Plane.h"
 #include "background/Background.h"
 
 class TestSurface {
@@ -44,7 +45,7 @@ private:
 
     std::thread m_renderThread;
     Background::Ptr m_Background;
-    Cube::Ptr m_Cube;
+    Plane::Ptr m_plane;
     LightCube::Ptr m_lightCube;
     Circle::Ptr m_circle;
     Sphere::Ptr m_sphere;

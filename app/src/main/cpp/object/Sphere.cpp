@@ -92,6 +92,6 @@ void Sphere::render() {
     updateRenderData();
     updateLight();
     glBindVertexArray(VAO);
-    glDrawArrays(GL_TRIANGLE_FAN, 0, (GLsizei)indices.size());
+    glDrawElements(GL_TRIANGLE_STRIP, (GLsizei)indices.size(), GL_UNSIGNED_INT, 0);
     glBindVertexArray(0);
 }

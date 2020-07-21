@@ -35,23 +35,61 @@ void main() {
 static const char vertexShader[] = R"(
 #version 300 es
 layout (location = 0) in vec3 aPos;
+layout (location = 1) in vec2 aTexCoords;
+layout (location = 2) in vec3 aNormal;
 
 uniform mat4 projection;
 uniform mat4 view;
 uniform mat4 transform;
+uniform bool isGaussian;
+out vec2 TexCoords;
 
 void main() {
-  gl_Position = projection * view * transform * vec4(aPos, 1.0);
+    if (isGaussian) {
+        gl_Position = vec4(aPos, 1.0);
+    } else {
+        gl_Position = projection * view * transform * vec4(aPos, 1.0);
+    }
+    TexCoords = aTexCoords;
 }
 )";
 
 static const char fragmentShader[] = R"(
 #version 300 es
+
+uniform sampler2D map;
 out vec4 FragColor;
 uniform vec4 color;
+in vec2 TexCoords;
+uniform bool isVertical;
 
 void main() {
-    FragColor = color;
+    float weight[5] = float[] (0.2270270270, 0.1945945946, 0.1216216216, 0.0540540541, 0.0162162162);
+    vec3 tex = texture(map, TexCoords).rgb * weight[0];
+
+    if (tex.r > 0.0 || tex.g > 0.0 || tex.b > 0.0) {
+        ivec2 size = textureSize(map, 0);
+        vec2 tex_offset;
+        tex_offset.x = 1.0 / 400.0;
+        tex_offset.y = 1.0 / 240.0;
+        if (!isVertical) {
+            for(int i = 1; i < 5; ++i)
+            {
+                tex += texture(map, TexCoords + vec2(tex_offset.x * float(i), 0.0)).rgb * weight[i];
+                tex += texture(map, TexCoords - vec2(tex_offset.x * float(i), 0.0)).rgb * weight[i];
+            }
+        } else {
+            for(int i = 1; i < 5; ++i)
+            {
+                tex += texture(map, TexCoords + vec2(0.0, tex_offset.y * float(i))).rgb * weight[i];
+                tex += texture(map, TexCoords - vec2(0.0, tex_offset.y * float(i))).rgb * weight[i];
+            }
+        }
+        FragColor.rgb = tex;
+    } else {
+        FragColor = color;
+    }
+    FragColor.a = 1.0;
 }
 )";
 
@@ -85,8 +123,9 @@ uniform vec4 color;
 
 uniform vec3 lightPos;
 uniform vec3 lightColor;
-
 uniform vec3 cameraPos;
+
+uniform bool blinn;
 
 void main() {
     float ambientStrength = 0.1;
@@ -100,11 +139,19 @@ void main() {
 
     float specularStrength = 0.5;
     vec3 viewDir = normalize(cameraPos - pos.xyz);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
-    vec3 specular = specularStrength * spec * lightColor;
+    float spec = 0.0;
 
+    if (blinn) {
+        vec3 halfwayDir = normalize(lightDir + viewDir);
+        spec = pow(max(dot(normal, halfwayDir), 0.0), 1.0);
+    } else {
+        vec3 reflectDir = reflect(-lightDir, norm);
+        spec = pow(max(dot(viewDir, reflectDir), 0.0), 8.0);
+    }
+
+    // vec3 specular = specularStrength * spec * lightColor;
+    vec3 specular = vec3(0.3) * spec;
     vec3 result = (ambient + diffuse + specular) * color.xyz;
-    FragColor = vec4(result, color.w);
+    FragColor = vec4(result, 1.0);
 }
 )";

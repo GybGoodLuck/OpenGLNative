@@ -2,9 +2,6 @@
 // Created by yuanbin on 19-8-9.
 //
 
-#include <glm/glm.hpp>
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/type_ptr.hpp>
 #include "Cube.h"
 
 #include "../shape/CubeInfo.h"

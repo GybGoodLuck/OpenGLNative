@@ -19,10 +19,15 @@ GLuint loadTexture(const char* path) {
     int w, h, n;
     stbi_set_flip_vertically_on_load(false);
     stbi_ptr data(stbi_load(path, &w, &h, &n, 0),
-                  [](unsigned char* data) {
-                      if (data) stbi_image_free(data);
-                  });
-
+            [path](unsigned char* data) {
+                  if (data) {
+                      stbi_image_free(data);
+                  } else {
+                      LOGD( "failed to load at path: %s", path);
+                      stbi_image_free(data);
+                  }
+              });
+    LOGD( "loadTexture (%d %d) path: %s", w, h, path);
     glGenTextures(1, &texture);
     glBindTexture(GL_TEXTURE_2D, texture);
 

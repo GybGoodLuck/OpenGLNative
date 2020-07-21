@@ -6,6 +6,10 @@
 
 #include <memory>
 
+#include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtc/type_ptr.hpp>
+
 #include <EGL/egl.h>
 #include <EGL/eglext.h>
 #include <GLES3/gl3.h>
@@ -70,6 +74,10 @@ public:
         return m_scale;
     }
 
+    void setTextureId(GLuint textureId) {
+        m_textureId = textureId;
+    }
+
 protected:
     int m_width;
     int m_height;
@@ -91,6 +99,7 @@ protected:
     GLint s_color;
 
     GLuint m_program;
+    GLuint m_textureId = 0;
 };
 
 class LightObject : public Object {
@@ -98,7 +107,7 @@ class LightObject : public Object {
 public:
     LightObject(int width, int height, const glm::vec3& pos,
                 const glm::vec3 &color, float alpha,
-                const Camera::Ptr& camera, const Light::Ptr& light);
+                const Camera::Ptr& camera, const Light::Ptr& light, bool blinn = false);
 
     virtual ~LightObject() {}
 
@@ -110,8 +119,11 @@ public:
 protected:
     GLint s_light_pos;
     GLint s_light_color;
+    GLint s_blinn;
 
     GLint s_camera_pos;
 
     Light::Ptr m_light;
+
+    bool m_blinn;
 };

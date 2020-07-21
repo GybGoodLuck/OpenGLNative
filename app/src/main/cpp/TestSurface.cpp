@@ -8,7 +8,7 @@
 TestSurface::TestSurface() {
     m_camera = std::make_shared<Camera>();
 
-    glm::vec3 pos = {1, -4, 2};
+    glm::vec3 pos = {1, 0, 2};
     glm::vec3 color = {1.0f, 1.0f, 1.0f};
     m_light = std::make_shared<Light>(pos, color);
 }
@@ -55,27 +55,17 @@ void TestSurface::prepare() {
     m_Background = std::make_shared<Background>(m_width, m_height, m_camera);
     glm::vec3 pos = {1, 1, 5};
     glm::vec3 color = {0.8f, 0.5f, 0.2f};
-    glm::vec3 scale = {1.0f, 1.5f, 1.0f};
-    m_Cube = std::make_shared<Cube>(m_width, m_height, pos, color, 1.0f, m_camera);
-    m_Cube->init();
-    m_Cube->setScale(scale);
+    glm::vec3 scale = {1.0f, 1.0f, 1.0f};
+    m_plane = std::make_shared<Plane>(m_width, m_height, pos, color, 1.0f, m_camera);
+    auto textureId = loadTexture("/sdcard/gldemo/3.jpg");
+    m_plane->setTextureId(textureId);
+    m_plane->init();
+    m_plane->setScale(scale);
 
     glm::vec3 lPos = {2, -3, 6};
     glm::vec3 lColor = {0.8f, 0.5f, 0.2f};
     m_lightCube = std::make_shared<LightCube>(m_width, m_height, lPos, lColor, 1.0f, m_camera, m_light);
     m_lightCube->init();
-
-    glm::vec3 cPos = {0, 0, 8};
-    glm::vec3 cColor = {0.6f, 0.6f, 0.2f};
-    m_circle = std::make_shared<Circle>(m_width, m_height, cPos, cColor, 1.0f, m_camera);
-    m_circle->init();
-
-    glm::vec3 sPos = {5, 1, 6};
-    glm::vec3 sColor = {0.8f, 0.2f, 0.2f};
-    glm::vec3 sScale = {0.8f, 0.8f, 0.8f};
-    m_sphere = std::make_shared<Sphere>(m_width, m_height, sPos, sColor, 1.0f, m_camera, m_light);
-    m_sphere->init();
-    m_sphere->setScale(sScale);
 }
 
 void TestSurface::setQua(float w, float x, float y, float z) {
@@ -85,7 +75,7 @@ void TestSurface::setQua(float w, float x, float y, float z) {
     quat.y = y;
     quat.z = -z;
     {
-        std::lock_guard<std::mutex> locke(m_sensor_mutex);
+        std::lock_guard<std::mutex> locker(m_sensor_mutex);
         m_quat = quat;
     }
 }
@@ -106,7 +96,7 @@ void TestSurface::renderLoop() {
 void TestSurface::update() {
     glm::quat qua;
     {
-        std::lock_guard<std::mutex> locke(m_sensor_mutex);
+        std::lock_guard<std::mutex> locker(m_sensor_mutex);
         qua = m_quat;
     }
     auto camerInfo = m_camera->getCameraInfo();
@@ -115,18 +105,16 @@ void TestSurface::update() {
     camerInfo.m_dir = qua * __dir;
     camerInfo.m_up = qua * __up;
     m_camera->setCameraInfo(camerInfo);
-    m_Cube->setQua(qua);
+    m_plane->setQua(qua);
 
     auto lightQua = glm::angleAxis(glm::radians(0.2f), glm::vec3(1.0f, 1.0f, 0.0f)) * m_lightCube->getQua();
     m_lightCube->setQua(lightQua);
 }
 
 void TestSurface::draw() {
+    m_plane->render();
     m_Background->render();
-    m_Cube->render();
     m_lightCube->render();
-    m_circle->render();
-    m_sphere->render();
 }
 
 TestSurface* testSurface = nullptr;

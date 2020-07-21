@@ -8,6 +8,7 @@
 #include "../shader/Shader.h"
 #include "../GLUtils.h"
 #include "../TexttureLoader.h"
+#include "../ILog.h"
 
 Background::Background(int width, int height, const Camera::Ptr &camera) : m_camera(camera) {
 
@@ -52,6 +53,7 @@ void Background::loadTexture() {
     faces.push_back(back);
 
     auto textureID  = loadCubemap(faces);
+    LOGD("textureID : %d", textureID);
     glBindTexture(GL_TEXTURE_CUBE_MAP, textureID);
 }
 
