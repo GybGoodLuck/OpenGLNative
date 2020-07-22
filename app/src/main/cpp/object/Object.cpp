@@ -37,7 +37,7 @@ void Object::updateCamera() {
 }
 
 void Object::updateRenderData() {
-    m_transform = glm::mat4();
+    m_transform = glm::mat4(1.0);
     updatePos();
     m_transform = m_transform * glm::mat4_cast(m_qua);
     scale();

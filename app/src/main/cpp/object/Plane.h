@@ -19,6 +19,8 @@ private:
     unsigned int FBUFFERS[2];
     unsigned int FBUFFERTEXTURE[2];
 
+    bool drawFrame;
+
     void prepareFrameBuffer(int width, int height);
 
 

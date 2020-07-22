@@ -7,13 +7,13 @@
 
 static const float planeVertices[] = {
     // positions
-    -1.f,  1.f, 0.0f,  0.0f, 0.0f,  0.0f, 0.0f, -1.0f,
-     1.f,  1.f, 0.0f,  0.0f, 1.0f,  0.0f, 0.0f, -1.0f,
-    -1.f, -1.f, 0.0f,  1.0f, 0.0f,  0.0f, 0.0f, -1.0f,
+    -1.f,  1.f, 0.0f,  0.0f, 1.0f,  0.0f, 0.0f, -1.0f,
+     1.f,  1.f, 0.0f,  1.0f, 1.0f,  0.0f, 0.0f, -1.0f,
+    -1.f, -1.f, 0.0f,  0.0f, 0.0f,  0.0f, 0.0f, -1.0f,
 
-    -1.f, -1.f, 0.0f,  1.0f, 0.0f,  0.0f, 0.0f, -1.0f,
-     1.f, -1.f, 0.0f,  1.0f, 1.0f,  0.0f, 0.0f, -1.0f,
-     1.f,  1.f, 0.0f,  0.0f, 1.0f,  0.0f, 0.0f, -1.0f,
+    -1.f, -1.f, 0.0f,  0.0f, 0.0f,  0.0f, 0.0f, -1.0f,
+     1.f, -1.f, 0.0f,  1.0f, 0.0f,  0.0f, 0.0f, -1.0f,
+     1.f,  1.f, 0.0f,  1.0f, 1.0f,  0.0f, 0.0f, -1.0f,
 };
 
 void Plane::init() {
@@ -38,6 +38,7 @@ void Plane::init() {
     glBindVertexArray(0);
 
     prepareFrameBuffer(m_width, m_height);
+    drawFrame = true;
 }
 
 void Plane::render() {
@@ -45,22 +46,25 @@ void Plane::render() {
     bool isFirst = true;
     glUseProgram(m_program);
     int isGaussian = glGetUniformLocation(m_program, "isGaussian");
-    glUniform1i(isGaussian, true);
-    for (int i = 0; i < 6; i++) {
-        glBindFramebuffer(GL_FRAMEBUFFER, FBUFFERS[isVertical]);
-        int isVerticalLocation = glGetUniformLocation(m_program, "isVertical");
-        glUniform1i(isVerticalLocation, isVertical);
-        if (isFirst) {
-            glBindTexture(GL_TEXTURE_2D, m_textureId);
-            isFirst = false;
-        } else {
-            glBindTexture(GL_TEXTURE_2D, FBUFFERTEXTURE[!isVertical]);
+    if (drawFrame) {
+        glUniform1i(isGaussian, true);
+        for (int i = 0; i < 12; i++) {
+            glBindFramebuffer(GL_FRAMEBUFFER, FBUFFERS[isVertical]);
+            int isVerticalLocation = glGetUniformLocation(m_program, "isVertical");
+            glUniform1i(isVerticalLocation, isVertical);
+            if (isFirst) {
+                glBindTexture(GL_TEXTURE_2D, m_textureId);
+                isFirst = false;
+            } else {
+                glBindTexture(GL_TEXTURE_2D, FBUFFERTEXTURE[!isVertical]);
+            }
+            glBindVertexArray(VAO);
+            glDrawArrays(GL_TRIANGLES, 0, 6);
+            isVertical = !isVertical;
         }
-        glBindVertexArray(VAO);
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-        isVertical = !isVertical;
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
+        drawFrame = false;
     }
-    glBindFramebuffer(GL_FRAMEBUFFER, 0);
     glUniform1i(isGaussian, false);
     updateRenderData();
     glBindVertexArray(VAO);
@@ -70,7 +74,6 @@ void Plane::render() {
 }
 
 void Plane::prepareFrameBuffer(int width, int height) {
-    LOGD("prepareFrameBuffer : (%d %d)", width, height);
     glGenFramebuffers(2, FBUFFERS);
     glGenTextures(2, FBUFFERTEXTURE);
     for (int i = 0; i < 2; i++) {
@@ -92,5 +95,4 @@ void Plane::prepareFrameBuffer(int width, int height) {
             LOGD("frame buffer not completed");
         }
     }
-
 }

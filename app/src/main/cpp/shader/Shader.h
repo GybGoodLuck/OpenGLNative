@@ -57,34 +57,47 @@ void main() {
 static const char fragmentShader[] = R"(
 #version 300 es
 
-uniform sampler2D map;
 out vec4 FragColor;
-uniform vec4 color;
 in vec2 TexCoords;
-uniform bool isVertical;
 
-void main() {
+uniform vec4 color;
+uniform sampler2D map;
+uniform bool isVertical;
+uniform bool isGaussian;
+
+vec3 gauss() {
     float weight[5] = float[] (0.2270270270, 0.1945945946, 0.1216216216, 0.0540540541, 0.0162162162);
     vec3 tex = texture(map, TexCoords).rgb * weight[0];
 
-    if (tex.r > 0.0 || tex.g > 0.0 || tex.b > 0.0) {
-        ivec2 size = textureSize(map, 0);
-        vec2 tex_offset;
-        tex_offset.x = 1.0 / 400.0;
-        tex_offset.y = 1.0 / 240.0;
-        if (!isVertical) {
-            for(int i = 1; i < 5; ++i)
-            {
-                tex += texture(map, TexCoords + vec2(tex_offset.x * float(i), 0.0)).rgb * weight[i];
-                tex += texture(map, TexCoords - vec2(tex_offset.x * float(i), 0.0)).rgb * weight[i];
-            }
-        } else {
-            for(int i = 1; i < 5; ++i)
-            {
-                tex += texture(map, TexCoords + vec2(0.0, tex_offset.y * float(i))).rgb * weight[i];
-                tex += texture(map, TexCoords - vec2(0.0, tex_offset.y * float(i))).rgb * weight[i];
-            }
+    ivec2 size = textureSize(map, 0);
+    vec2 tex_offset;
+    tex_offset.x = 1.0 / 500.0;
+    tex_offset.y = 1.0 / 300.0;
+    if (!isVertical) {
+        for(int i = 1; i < 5; ++i)
+        {
+            tex += texture(map, TexCoords + vec2(tex_offset.x * float(i), 0.0)).rgb * weight[i];
+            tex += texture(map, TexCoords - vec2(tex_offset.x * float(i), 0.0)).rgb * weight[i];
         }
+    } else {
+        for(int i = 1; i < 5; ++i)
+        {
+            tex += texture(map, TexCoords + vec2(0.0, tex_offset.y * float(i))).rgb * weight[i];
+            tex += texture(map, TexCoords - vec2(0.0, tex_offset.y * float(i))).rgb * weight[i];
+        }
+    }
+    return tex;
+}
+
+void main() {
+    vec3 tex;
+    if (isGaussian) {
+        tex = gauss();
+    } else {
+        tex = texture(map, TexCoords).rgb;
+    }
+
+    if (tex.r > 0.0 || tex.g > 0.0 || tex.b > 0.0) {
         FragColor.rgb = tex;
     } else {
         FragColor = color;

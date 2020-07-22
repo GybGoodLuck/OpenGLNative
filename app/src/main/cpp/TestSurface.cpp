@@ -55,12 +55,16 @@ void TestSurface::prepare() {
     m_Background = std::make_shared<Background>(m_width, m_height, m_camera);
     glm::vec3 pos = {1, 1, 5};
     glm::vec3 color = {0.8f, 0.5f, 0.2f};
-    glm::vec3 scale = {1.0f, 1.0f, 1.0f};
+    glm::vec3 scale = {1.5f, 1.0f, 1.0f};
+    glm::quat qua;
+    glm::normalize(qua);
+    qua = glm::angleAxis(glm::radians(-90.0f), glm::vec3(0.0f, 0.0f, 1.0f)) * qua;
     m_plane = std::make_shared<Plane>(m_width, m_height, pos, color, 1.0f, m_camera);
     auto textureId = loadTexture("/sdcard/gldemo/3.jpg");
     m_plane->setTextureId(textureId);
     m_plane->init();
     m_plane->setScale(scale);
+    m_plane->setQua(qua);
 
     glm::vec3 lPos = {2, -3, 6};
     glm::vec3 lColor = {0.8f, 0.5f, 0.2f};
@@ -105,7 +109,6 @@ void TestSurface::update() {
     camerInfo.m_dir = qua * __dir;
     camerInfo.m_up = qua * __up;
     m_camera->setCameraInfo(camerInfo);
-    m_plane->setQua(qua);
 
     auto lightQua = glm::angleAxis(glm::radians(0.2f), glm::vec3(1.0f, 1.0f, 0.0f)) * m_lightCube->getQua();
     m_lightCube->setQua(lightQua);
